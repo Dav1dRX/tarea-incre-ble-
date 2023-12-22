@@ -1,0 +1,397 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #000;
+  overflow: hidden;
+}
+/*IMAGENES */
+img{
+  position: absolute;
+  z-index: 2;
+  margin-left: auto; /* Pone un margen izquierdo automático */
+  margin-right: -70%;   /* Pone un margen derecho de 0 */
+  display: block;    /* Asegura que la imagen se comporte como un bloque */
+  opacity: 70%;
+  width: 500px; /* Establece el ancho deseado, por ejemplo, 300 píxeles */
+  height: 660px; /* Establece el alto deseado, por ejemplo, 200 píxeles */
+}
+img.img-izquierda {
+  z-index: 2;
+  left: 5%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 790px;
+}
+
+img.img-derecha {
+  z-index: 2;
+  right: 30%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 790px;
+}
+
+
+
+ 
+h2 {
+  position: absolute;
+  top: 2cqi; /* Ajusta la posición desde la parte superior */
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgb(248, 248, 248);
+  font-size: 24px;
+  background: #33333300;
+  background-image: url(https://media.giphy.com/media/xu2tCKnHn7G7e/giphy.gif);
+  
+  background-size: cover;
+  padding: 10px;
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+  z-index: 4;
+  overflow: hidden; /* Para ocultar el desbordamiento y que el glitch no afecte otros elementos */
+}
+
+/* Animación de glitch */
+@keyframes glitch {
+  0% {
+    clip-path: inset(0 50% 0 0);
+  }
+  5% {
+    clip-path: inset(70% 0 10% 0);
+  }
+  10% {
+    clip-path: inset(0 50% 0 0);
+  }
+  15% {
+    clip-path: inset(40% 0 60% 0);
+  }
+  20% {
+    clip-path: inset(0 50% 0 0);
+  }
+  25% {
+    clip-path: inset(30% 0 70% 0);
+  }
+  30%, 100% {
+    clip-path: inset(0 50% 0 0);
+  }
+}
+
+h2:hover {
+  animation: glitch 0.5s infinite;
+}
+
+
+section {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: wrap;
+  overflow: hidden;
+  z-index: 0; /* Asegúrate de que el fondo tenga un índice Z menor */
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#000, #0f0, #000);
+  animation: animate 5s linear infinite;
+  z-index: -1; /* Asegúrate de que el fondo tenga un índice Z menor */
+ 
+}
+
+
+@keyframes animate {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+section span {
+  position: relative;
+  display: block;
+  width: calc(6.25vw - 2px);
+  height: calc(6.25vw - 2px);
+  background: #181818;
+  z-index: 2;
+  transition: 1.5s;
+}
+
+section span:hover {
+  background: #0f0;
+  transition: 0s;
+}
+
+nav {
+  position: absolute;
+  left: 10px; /* Ajusta la posición según sea necesario */
+  top:20px; /* Ajusta la posición según sea necesario */
+  z-index: 2; /* Asegúrate de que el menú tenga un índice Z mayor */
+}
+.menu {
+  list-style: none;
+  background: #22222200;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(7, 7, 7, 0.397);
+  z-index: 2;
+  font-size: 20px;
+  backdrop-filter: blur(5px);
+  border-image-slice: 1;
+  border-image-width: 2px;
+  animation: gradientAnimation 5s linear infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    border-image-source: linear-gradient(to right, #3cff00, #01cff3);
+  }
+  25% {
+    border-image-source: linear-gradient(to right, #01cff3, #3cff00);
+  }
+  50% {
+    border-image-source: linear-gradient(to right, #3cff00, #01cff3);
+  }
+  75% {
+    border-image-source: linear-gradient(to right, #01cff3, #3cff00);
+  }
+  100% {
+    border-image-source: linear-gradient(to right, #3cff00, #01cff3);
+  }
+}
+
+.menu a {
+  position: relative;
+  text-decoration: none;
+  color: #fff5f5;
+  padding: 8px 16px;
+  display: block;
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+.menu a:hover {
+  color: #01f3df;
+}
+
+.menu a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #01f3df;
+  transition: width 0.3s ease-in-out;
+}
+
+.menu a:hover::before {
+  width: 100%;
+}
+
+.menu a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 100%;
+  height: 2px;
+  background-color: #01f3df;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+
+.menu li:hover > ul {
+  display: block;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: -50%;
+  left: 100%; /* Coloca el submenu al borde derecho del elemento padre */
+  background-color: #1b202081;
+  width: max-content;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.521);
+  z-index: 3;
+  backdrop-filter: blur(5px);
+}
+.menu li {
+  position: relative;
+}
+
+.menu li:hover .submenu {
+  display: block;
+}
+
+.submenu li {
+  margin-bottom: -35px;
+}
+
+.submenu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.submenu a:hover {
+  color: #01f3df;
+}
+
+
+
+
+/* Estilos para el contenedor principal */
+.main-container {
+  display: flex;
+  justify-content: space-around; /* Puedes ajustar esto según tus necesidades */
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  background:#000000;
+  overflow: hidden;
+  margin-left: 22%;
+  z-index: 3;
+
+}
+
+/* Contenedor para entrada y respuesta */
+  
+.main-container {
+  display: flex;
+  justify-content: space-around; /* Puedes ajustar esto según tus necesidades */
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  background: #0a0a0a00;
+  overflow: hidden;
+}
+.container {
+  display: flex;
+  gap: 20px;
+  z-index: 3;
+}
+
+/* Estilos para el contenedor de entrada */
+.input-container {
+  max-width: 500px;
+  background-color: #413e3e50;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+/* Estilos para el contenedor de respuesta */
+.resp-container {
+  max-width: 500px;
+  background-color: #413e3e50;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+/* Estilos para etiquetas y entradas en el formulario */
+.label {
+  margin-bottom: 10px;
+  color: #01f3df;
+}
+
+/* Estilos para los botones */
+/* Estilos para los botones */
+button {
+  
+margin-left: 20% ;
+  font-size: 15px;
+  padding: 5px;
+  width: auto; /* Cambiado a auto para que los botones se ajusten al contenido */
+  margin-right: 5px; /* Agregado margen entre los botones */
+  border: 2px solid #01f3df;
+  border-radius: 8px;
+  background-color: #01f3df;
+  color: #020202;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+/* Efecto de resplandor al pasar el ratón sobre el botón */
+button:hover {
+  background-color: #01f3df80; /* Cambia el color de fondo con opacidad */
+  color: #fff;
+  box-shadow: 0 0 10px rgba(1, 243, 223, 0.8); /* Añade un resplandor */
+}
+
+input {
+  font-size: 20px;
+  padding: 15px;
+  margin-bottom: 10px;
+  width: 100%;
+  border: 2px solid #01f3df;
+  border-radius: 8px;
+  background-color: #222;
+  color: #fff;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Formularios */
+input:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 8px rgba(0, 128, 0, 0.4);
+}
+
+/* Estilos para los resultados */
+.resp {
+  padding: 15px;
+  border: 2px solid #01f3df;
+  border-radius: 8px;
+  max-width: 100%;
+  background-color: #222;
+  backdrop-filter: blur(5px);
+  color: #fff;
+}
+#audiobaby {
+  display: none;
+}
+
+p{
+  text-align: center;
+  margin-left: 10%;
+  font-size: 20px;
+  color: #e78484;
+}
+
+p:hover{
+  color: rgb(114, 221, 114);
+}

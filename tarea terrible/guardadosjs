@@ -1,0 +1,76 @@
+arreglooo(){
+  // Números ingresados por el usuario
+  let entradanum = document.getElementById("entradanum").value;
+  // Dividir la cadena en un array usando la coma como separador
+ function conver (entradanum,arreglo1){
+  let arreglo1 = entradanum.split(',').map(Number);
+  // Verificar si alguno de los elementos no es un número
+  if (arreglo1.some(isNaN)) {
+    console.log("Por favor, ingrese solo números válidos :(");
+    document.getElementById("resp").innerHTML = `Ingrese solo números válidos :(`;
+  } else {
+    // Convertir el array a una cadena
+    let miCadena = arreglo1.join(',');
+  
+    console.log(`Arreglo ingresado: [${miCadena}]`);
+    document.getElementById("resp").innerHTML = `Arreglo ingresado: [${miCadena}]`;
+    return miCadena;
+  }
+}
+let respu = conver (entradanum,arreglo1);
+document.getElementById("resp").innerHTML = `Arreglo ingresado: [${respu}]`;
+
+
+
+
+
+//para encontrar el numero mas alto dek arreglo 
+let numeromaxi = encontraralto(arreglo1);
+console.log(`el numero mas alto es ${numeromaxi}`);
+document.getElementById("resp").innerHTML += `<br> el numero mas alto es ${numeromaxi}`
+//llamamos a la funcion 
+function encontraralto(arreglo1){
+  let max = arreglo1[0];
+  for (let  i = 1; i < arreglo1.length; i++){
+    if(arreglo1[i]> max){
+      max = arreglo1[i];
+    }
+  }
+  return max;
+}
+//encontrar X numero en un arreglo :C
+let numeroBuscar = parseInt(document.getElementById("numeroBuscar").value);
+
+  if (!isNaN(numeroBuscar)) {
+    let encontrado = buscarNumero(arreglo1, numeroBuscar);
+
+    if (encontrado) {
+      console.log(`El número ${numeroBuscar} está en el arreglo.`);
+      document.getElementById("resp").innerHTML += `<br>El número ${numeroBuscar} está en el arreglo.`;
+    } else {
+      console.log(`El número ${numeroBuscar} no está en el arreglo.`);
+      document.getElementById("resp").innerHTML += `<br>El número ${numeroBuscar} no está en el arreglo.`;
+    }
+  } else {
+    console.log("Por favor, ingrese un número válido para buscar.");
+    document.getElementById("resp").innerHTML += "<br>Por favor, ingrese un número válido para buscar.";
+  }
+
+  // Función para buscar un número en el arreglo
+  function buscarNumero(arreglo, numero) {
+    for (let i = 0; i < arreglo.length; i++) {
+      if (arreglo[i] === numero) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+
+//ingresar numero en un arreglo 
+  // Ingresar numero en un arreglo
+  let newnum = parseInt(document.getElementById("newnum").value);
+  // Llama a la función conver para actualizar el arreglo después de ingresar un nuevo número
+  arreglo1 = conver(entradanum + ',' + newnum);
+  document.getElementById("resp").innerHTML += `<br>Número ingresado: ${newnum} <br>Arreglo actualizado: [${arreglo1}] `;
+}
